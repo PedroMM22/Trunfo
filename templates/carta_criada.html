@@ -1,0 +1,18 @@
+def carta_criada():
+    nome = request.form["nome"]
+    imagem = request.form["imagem"]
+    raridade = request.form["raridade"]
+    viralidade = int(request.form["viralidade"])
+    zoeira = int(request.form["zoeira"])
+    nostalgia = int(request.form["nostalgia"])
+
+    # A carta nova também entra no duelo (até o servidor reiniciar!)
+    chave = nome.lower().replace(" ", "-")
+    cartas[chave] = {"nome": nome, "imagem": imagem, "raridade": raridade,
+                     "viralidade": viralidade, "zoeira": zoeira, "nostalgia": nostalgia}
+
+    poder_total = viralidade + zoeira + nostalgia
+    return render_template("carta_criada.html",
+                           chave=chave, nome=nome, imagem=imagem, raridade=raridade,
+                           viralidade=viralidade, zoeira=zoeira, nostalgia=nostalgia,
+                           poder_total=poder_total)

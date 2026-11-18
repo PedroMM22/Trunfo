@@ -3,11 +3,23 @@
 <html>
     <head>
         <title>Super Trunfo: ANIMAIS</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../static/css/style.css">
     </head>
 
     <body>
         <h1>TRUNFO DE OBJETOS</h1>
+            <p>
+                        
+            <a class="botao" href="/pacotinho">Abrir pacotinho </a>
+            <a href="/regras">Ver as regras do jogo </a>
+            <a href="{{ url_for('criar') }}">Criar uma nova carta</a>
+
+
+
+            </p>
+
+            
+
         <P> Esse jogo se baseia no duelo de cartas
              de objetos, aceita um duelo?
 
@@ -18,7 +30,7 @@
         <div class="carta lendaria">
             <h2> Papel Higiênico </h2>
             <img
-                src="images/PapelHigienico.jpg"
+                src="../static/images/PapelHigienico.jpg"
                 alt="Imagem retirada de: https://pt.wikipedia.org/wiki/Papel_higi%C3%AAnico"
                 width="250">
 
@@ -29,12 +41,13 @@
                 <li>Aparência: 100</li>
                 <li>AURA: 100</li>
             </ul>
+            <a class="botao" href="/duelo/papel">Duelar</a>
         </div>
 
         <div class="carta rara">
-            <h2> <B></B>alde </h2>
+            <h2> <B></B> Balde </h2>
             <img
-                src="images/balde.jpg"
+                src="../static/images/balde.jpg"
                 alt="Imagem retirada de: https://www.lepok.com.br/produto/Balde-Plastico-15-Litros-Com-Alca-Shangrila/90441?srsltid=AYCX9vL5_gxKiFEA_nEE43cZ_OkZMNzXVxN_PGg2Q9kXcZjJr6F9fz4R"
                 width="250">
 
@@ -45,8 +58,13 @@
                 <li>Aparência: 38</li>
                 <li>AURA: 67</li>
             </ul>
+            <a class="botao" href="/duelo/balde">Duelar</a>
             </div>
         </div>
     </body>
 
 </html>
+        <p>
+            <a class="botao" href="/pacotinho">Abrir pacotinho</a>
+            <a href="/regras">Ver as regras do jogo</a>
+        </p>
