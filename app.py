@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import random
 
 app = Flask(__name__)
@@ -13,17 +13,17 @@ cartas = {
     "papel" : {
                     "nome" : "Papel Higiênico",
                     "img"  : "PapelHigienico.jpg",
-                    "raridade" : "Lendária",
+                    "raridade" : "lendaria",
                     "utilidade" : 100,
-                    "aparência" : 100,
+                    "aparencia" : 100,
                     "aura" : 100
                 },
     "balde" : {
                         "nome" : "Balde",
                         "img" : "balde.jpg",
-                        "raridade" : "Comum",
+                        "raridade" : "rara",
                         "utilidade" : 71,
-                        "aparência" : 38,
+                        "aparencia" : 38,
                         "aura" : 67
                     },
         
@@ -32,7 +32,7 @@ cartas = {
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", cartas=cartas)
 
 
 @app.route("/regras")
@@ -86,28 +86,28 @@ def resultado(carta, atributo):
                            poder_total=poder_total)
 
 
-@app.rout("/criar")
+@app.route("/criar")
 def criar():
     return render_template("criar.html")
 
-@app.route("/carta_criada, methods = ["POST"]")
+@app.route("/carta_criada", methods = ["POST"])
 def carta_criada():
     nome = request.form["nome"]
     imagem = request.form["imagem"]
     raridade = request.form["raridade"]
-    viralidade = int(request.form["viralidade"])
-    zoeira = int(request.form["zoeira"])
-    nostalgia = int(request.form["nostalgia"])
+    utilidade = int(request.form["utilidade"])
+    aparencia = int(request.form["aparencia"])
+    aura = int(request.form["aura"])
 
     # A carta nova também entra no duelo (até o servidor reiniciar!)
     chave = nome.lower().replace(" ", "-")
     cartas[chave] = {"nome": nome, "imagem": imagem, "raridade": raridade,
-                     "viralidade": viralidade, "zoeira": zoeira, "nostalgia": nostalgia}
+                     "utilidade": utilidade, "aparencia": aparencia, "aura": aura}
 
-    poder_total = viralidade + zoeira + nostalgia
+    poder_total = utilidade + aparencia + aura
     return render_template("carta_criada.html",
                            chave=chave, nome=nome, imagem=imagem, raridade=raridade,
-                           viralidade=viralidade, zoeira=zoeira, nostalgia=nostalgia,
+                           utilidade=utilidade, aparencia=aparencia, aura=aura,
                            poder_total=poder_total)
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>Super Trunfo: ANIMAIS</title>
+        <title>Super Trunfo: OBJETOS</title>
         <link rel="stylesheet" href="../static/css/style.css">
     </head>
 
@@ -14,8 +14,6 @@
             <a href="/regras">Ver as regras do jogo </a>
             <a href="{{ url_for('criar') }}">Criar uma nova carta</a>
 
-
-
             </p>
 
             
@@ -24,47 +22,33 @@
              de objetos, aceita um duelo?
 
         </P>
+                              <!-- A carta vai aqui -->
+        <div class="colecao">
+            {% for chave, carta in cartas.items() %}
+                <div class="carta {{ carta['raridade'] }}">
+                    <h2>{{ carta['nome'] }}</h2>
+                    <img src="/static/images/{{ carta['img'] }}"
+                    alt="{{ carta['nome'] }}"
+                    width="250">
 
-    <!-- Cartas -->
-     <div class="colecao">
-        <div class="carta lendaria">
-            <h2> Papel Higiênico </h2>
-            <img
-                src="../static/images/PapelHigienico.jpg"
-                alt="Imagem retirada de: https://pt.wikipedia.org/wiki/Papel_higi%C3%AAnico"
-                width="250">
+                    <p class="raridade">
+                    {% if carta['raridade'] == "lendaria" %}
+                        Lendária
+                    {% elif carta['raridade'] == "rara" %}
+                        Rara
+                    {% elif carta['raridade'] == "epica" %}
+                        Épica
+                    {% else %}
+                        Comum
+                    {% endif %}
+                    </p>
 
-            <p class="raridade">LENDÁRIA</p>
-
-            <ul class="atributos">
-                <li>Utilidade: 100</li>
-                <li>Aparência: 100</li>
-                <li>AURA: 100</li>
-            </ul>
-            <a class="botao" href="/duelo/papel">Duelar</a>
+                    <ul class="atributos">
+                        <li>Utilidade: {{ carta['utilidade'] }}</li>
+                        <li>Aparência: {{ carta['aparencia'] }}</li>
+                        <li>Aura: {{ carta['aura'] }}</li>
+                    </ul>
+                    <a class="botao" href="/duelo/{{ chave }}">Duelar</a>
+                </div>
+            {% endfor %}
         </div>
-
-        <div class="carta rara">
-            <h2> <B></B> Balde </h2>
-            <img
-                src="../static/images/balde.jpg"
-                alt="Imagem retirada de: https://www.lepok.com.br/produto/Balde-Plastico-15-Litros-Com-Alca-Shangrila/90441?srsltid=AYCX9vL5_gxKiFEA_nEE43cZ_OkZMNzXVxN_PGg2Q9kXcZjJr6F9fz4R"
-                width="250">
-
-            <p class="raridade">RARA </p>
-
-            <ul class="atributos">
-                <li>Utilidade: 71</li>
-                <li>Aparência: 38</li>
-                <li>AURA: 67</li>
-            </ul>
-            <a class="botao" href="/duelo/balde">Duelar</a>
-            </div>
-        </div>
-    </body>
-
-</html>
-        <p>
-            <a class="botao" href="/pacotinho">Abrir pacotinho</a>
-            <a href="/regras">Ver as regras do jogo</a>
-        </p>

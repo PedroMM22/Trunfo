@@ -1,0 +1,30 @@
+<form class="formulario" action="/carta_criada" method="post">
+    <label for="nome">Nome da carta</label>
+    <input type="text" name="nome" id="nome" placeholder="Ex.: Gato Surpreso" required>
+
+    <label for="imagem">Imagem</label>
+    <select name="imagem" id="imagem">
+        <option value="PapelHigienico.jpg">Papel</option>
+        <option value="balde.jpg">Balde</option>
+        <option value="pato.png">Pato</option>
+        <option value="sapo.png">Sapo</option>
+    </select>
+
+    <label for="raridade">Raridade</label>
+    <select name="raridade" id="raridade">
+        <option value="comum">Comum</option>
+        <option value="rara">Rara</option>
+        <option value="lendaria">Lendária</option>
+    </select>
+
+    <label for="utilidade">Utilidade (0 a 100)</label>
+    <input type="number" name="utilidade" id="utilidade" min="0" max="100" required>
+
+    <label for="aparencia">Aparência (0 a 100)</label>
+    <input type="number" name="aparencia" id="aparencia" min="0" max="100" required>
+
+    <label for="aura">Aura (0 a 100)</label>
+    <input type="number" name="aura" id="aura" min="0" max="100" required>
+
+    <button type="submit">Criar carta</button>
+</form>
